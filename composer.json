@@ -1,0 +1,23 @@
+{
+  "name": "kwinters/php-env-loader",
+  "description": "Tiny .env loader with typed getters",
+  "type": "library",
+  "license": "MIT",
+  "keywords": ["dotenv", "env", "config"],
+  "require": {
+    "php": ">=8.1"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^10.5 || ^11.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Winters\\Env\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Winters\\Env\\Tests\\": "tests/"
+    }
+  }
+}
