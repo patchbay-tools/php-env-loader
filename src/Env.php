@@ -87,6 +87,18 @@ class Env
         return $this->raw($name) !== null;
     }
 
+    /**
+     * Fail early, at boot, when any of the named variables is not set.
+     */
+    public function require(string ...$names): void
+    {
+        foreach ($names as $name) {
+            if ($this->raw($name) === null) {
+                throw EnvException::missing($name);
+            }
+        }
+    }
+
     public function string(string $name, ?string $default = null): string
     {
         return $this->raw($name) ?? $default ?? throw EnvException::missing($name);
