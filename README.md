@@ -30,7 +30,11 @@ $hosts   = $env->list('TRUSTED_PROXIES');    // "a, b, c" -> ['a', 'b', 'c']
 
 A getter without a default throws `Winters\Env\EnvException` when the variable is missing, and
 every typed getter throws when the value doesn't parse, so misconfiguration fails at boot
-instead of somewhere later.
+instead of somewhere later. To check everything up front:
+
+```php
+$env->require('DB_URL', 'APP_KEY', 'MAIL_DSN');
+```
 
 A missing `.env` file is not an error: in production everything usually comes from the real
 environment, and the getters read it the same way.

@@ -65,4 +65,14 @@ class EnvTest extends TestCase
         $this->expectException(EnvException::class);
         $env->int('DB_HOST');
     }
+
+    public function testRequire(): void
+    {
+        $env = Env::load($this->file);
+        $env->require('DB_HOST', 'DB_URL');
+
+        $this->expectException(EnvException::class);
+        $this->expectExceptionMessage('APP_KEY');
+        $env->require('DB_HOST', 'APP_KEY');
+    }
 }
